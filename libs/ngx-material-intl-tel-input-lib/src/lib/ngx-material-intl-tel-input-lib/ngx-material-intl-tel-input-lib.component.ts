@@ -30,7 +30,7 @@ import {
 } from '@angular/material/select';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { Observable, ReplaySubject, Subject, take, takeUntil } from 'rxjs';
-import { CountryCode } from '../data/country-code';
+import { CountryCodeSpanish } from '../data/country-code-spanish';
 import { Country } from '../types/country.model';
 import {
   PhoneNumber,
@@ -70,7 +70,7 @@ import { getMaxPhoneNumberLength } from '../utils/phone-number.utils';
     IMaskModule
   ],
   providers: [
-    CountryCode,
+    CountryCodeSpanish,
     {
       provide: MAT_SELECT_CONFIG,
       useValue: { overlayPanelClass: 'tel-mat-select-pane' }
@@ -83,7 +83,7 @@ import { getMaxPhoneNumberLength } from '../utils/phone-number.utils';
 export class NgxMaterialIntlTelInputComponent
   implements OnInit, AfterViewInit, OnDestroy
 {
-  private readonly countryCodeData = inject(CountryCode);
+  private readonly countryCodeData = inject(CountryCodeSpanish);
   private readonly geoIpService = inject(GeoIpService);
   private readonly countryDataService = inject(CountryDataService);
   private readonly controlContainer = inject(ControlContainer);
@@ -138,15 +138,15 @@ export class NgxMaterialIntlTelInputComponent
   visibleCountries = input<(CountryISO | string)[]>([]);
   excludedCountries = input<(CountryISO | string)[]>([]);
   textLabels = input<TextLabels>({
-    mainLabel: 'Phone number',
-    codePlaceholder: 'Code',
-    searchPlaceholderLabel: 'Search',
-    noEntriesFoundLabel: 'No countries found',
-    nationalNumberLabel: 'Number',
-    hintLabel: 'Select country and type your phone number',
-    invalidNumberError: 'Number is not valid',
-    requiredError: 'This field is required',
-    numberTooLongError: 'Phone number is too long'
+    mainLabel: 'Número de teléfono',
+    codePlaceholder: 'Código',
+    searchPlaceholderLabel: 'Buscar',
+    noEntriesFoundLabel: 'No se encontraron países',
+    nationalNumberLabel: 'Número',
+    hintLabel: 'Selecciona el país y escribe tu número de teléfono',
+    invalidNumberError: 'El número no es válido',
+    requiredError: 'Este campo es obligatorio',
+    numberTooLongError: 'El número de teléfono es demasiado largo'
   });
   useMask = input<boolean>(false);
   forceSelectedCountryCode = input<boolean>(false);
