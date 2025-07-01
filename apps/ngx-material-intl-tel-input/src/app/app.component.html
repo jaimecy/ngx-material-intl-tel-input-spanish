@@ -1,4 +1,13 @@
 <section>
+  <h1>ngx-material-intl-tel-input - Versión en Español</h1>
+  <p>
+    Esta es la versión en español del componente de entrada de teléfonos
+    internacionales.
+  </p>
+  <p>
+    Los nombres de países aparecen en español y la búsqueda funciona en español.
+  </p>
+
   <form [formGroup]="formTestGroup" (ngSubmit)="onSubmit()">
     <ngx-material-intl-tel-input
       (currentValue)="getValue($event)"
@@ -14,45 +23,47 @@
       [appearance]="'fill'"
     ></ngx-material-intl-tel-input>
     <button mat-flat-button type="submit" [disabled]="!formTestGroup.valid">
-      Submit
+      Enviar
     </button>
-    <button mat-flat-button (click)="resetForm()" type="button">Reset</button>
+    <button mat-flat-button (click)="resetForm()" type="button">
+      Reiniciar
+    </button>
 
     <mat-checkbox (change)="toggleShowSetPhoneInput()"
-      >Show input to change number</mat-checkbox
+      >Mostrar entrada para cambiar número</mat-checkbox
     >
     @if (showSetPhoneInput()) {
       <mat-form-field>
-        <mat-label>Set phone number</mat-label>
+        <mat-label>Establecer número de teléfono</mat-label>
         <input matInput type="text" formControlName="setPhoneTextbox" />
       </mat-form-field>
       <button mat-flat-button (click)="setPhone()" type="button">
-        Set phone number
+        Establecer número
       </button>
     }
   </form>
   @if (currentPhoneValue()) {
     <div>
-      Returned value: <br /><mat-chip>{{ currentPhoneValue() }}</mat-chip>
+      Valor devuelto: <br /><mat-chip>{{ currentPhoneValue() }}</mat-chip>
     </div>
     <div class="current-country-code-container">
       @if (currentCountryCode()) {
         <div>
-          Country code: <br /><mat-chip>{{ currentCountryCode() }}</mat-chip>
+          Código de país: <br /><mat-chip>{{ currentCountryCode() }}</mat-chip>
         </div>
       }
       @if (currentCountryISO()) {
         <div>
-          Country ISO: <br /><mat-chip>{{ currentCountryISO() }}</mat-chip>
+          ISO del país: <br /><mat-chip>{{ currentCountryISO() }}</mat-chip>
         </div>
       }
     </div>
   } @else {
-    <div>No value returned</div>
+    <div>No se ha devuelto ningún valor</div>
   }
   @if (submittedPhoneValue()) {
     <div>
-      Submitted value: <br /><mat-chip>{{ submittedPhoneValue() }}</mat-chip>
+      Valor enviado: <br /><mat-chip>{{ submittedPhoneValue() }}</mat-chip>
     </div>
   }
   <router-outlet></router-outlet>
